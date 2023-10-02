@@ -1,43 +1,51 @@
-#include <stdio.h>
-#include "holberton.h"
+#include "main.h"
+
 /**
- * _strlen_recursion - returns the length of a string.
- * @s: the string to count
- * Return: length of the string
+ * last_index - return the last index of a string
+ * @s: pointer the string
+ * Return: int
  */
-int _strlen_recursion(char *s)
+
+int is_palindrome(char *s);
+int check(char *s, int start, int end, int mod);
+int last_index(char *s)
 {
-	if (*s)
-	{
-		s++;
-		return (1 + _strlen_recursion(s));
-	}
-	return (0);
+int n = 0;
+
+if (*s > '\0')
+	n += last_index(s + 1) + 1;
+
+return (n);
 }
+
 /**
- * checker - helper function for is_palindrome
- * @str: the string
- * @len: length of string
- * @count: counter of recursion
- * Return: 1 if string is a palindrome, 0 if it is not.
+ * is_palindrome - check if a string is palindrome
+ * @s: string to check
+ * Return: 0 or 1
  */
-int checker(char *str, int len, int count)
-{
-	if (count >= len)
-		return (1);
-	if (str[len] == str[count])
-		return (checker(str, len - 1, count + 1));
-	return (0);
-}
-/**
- * is_palindrome - checks if the string is a palindrome
- * @s: the string to check
- * Return: 1 if string is a palindrome, 0 if it is not.
- */
+
 int is_palindrome(char *s)
 {
-	int len = _strlen_recursion(s);
-	int count = 0;
+int end = last_index(s);
 
-	return (checker(s, len - 1, count));
+return (check(s, 0, end - 1, end % 2));
+}
+
+/**
+ * check - check for the palindrome
+ * @s: string
+ * @start: int moves frome right to left
+ * @end: int moves frome left to right
+ * @mod: int
+ * Return: 0 or 1
+ */
+
+int check(char *s, int start, int end, int mod)
+{
+	if ((start == end && mod != 0) || ((start == end + 1 && mod == 0))
+	return (1);
+	else if (s[start] != s[end])
+	return (0);
+	else
+	return (check(s, start + 1, end - 1, mod));
 }
