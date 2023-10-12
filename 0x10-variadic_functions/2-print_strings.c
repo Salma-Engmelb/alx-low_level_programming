@@ -3,7 +3,7 @@
 
 /**
  * print_strings - prints string with separartor
- * @separartor: the string separartor
+ * @separator: the string separator
  * @n: number of argument
  * @...: the string to print
  *
