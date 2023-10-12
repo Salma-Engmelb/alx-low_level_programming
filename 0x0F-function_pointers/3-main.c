@@ -3,29 +3,30 @@
 #include <stdio.h>
 
 /**
- * main - check the code for the school students.
- * @argc: the number of args
- * @argv: argument vector
- *
- * Return: always 0.
- */
-
-int main(int argc, char **argv)
+  * main - ...
+  * @argc: ...
+  * @argv: ...
+  *
+  * Return: ...
+  */
+int main(int argc, char *argv[])
 {
-	int (*op_func)(int, int), a, b;
+	int (*oprt)(int, int);
 
 	if (argc != 4)
-		printf("Error\n"), exit(98);
+	{
+		printf("Error\n");
+		exit(98);
+	}
 
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
+	oprt = get_op_func(argv[2]);
 
-	op_func = get_op_func(argv[2]);
-	if (!op_func)
-		printf("Error\n"), exit(99);
-	if (!b && (argv[2][0] == '/' || argv[2][0] == '%'))
-		printf("Error\n", exit(100);
+	if (!oprt)
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
-	printf("%d\n", op_func(a, b));
+	printf("%d\n", oprt(atoi(argv[1]), atoi(argv[3])));
 	return (0);
 }
